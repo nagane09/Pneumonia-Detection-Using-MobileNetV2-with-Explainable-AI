@@ -1,0 +1,7 @@
+torch
+torchvision
+pillow
+streamlit
+pytorch-grad-cam
+scikit-learn
+opencv-python-headless
