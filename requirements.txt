@@ -1,6 +1,5 @@
 flask
-tensorflow
-numpy
-pillow
-gunicorn
 torch
+torchvision
+pillow
+numpy
