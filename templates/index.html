@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pneumonia Detection</title>
+
+<style>
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1e40af;
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --text: #0f172a;
+    --muted: #64748b;
+    --border: #e2e8f0;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Inter, system-ui, Arial, sans-serif;
+    background: linear-gradient(135deg, #e0e7ff, #f8fafc);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 520px;
+}
+
+.card {
+    background: var(--card);
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+}
+
+h1 {
+    text-align: center;
+    margin: 0;
+    font-size: 26px;
+    color: var(--text);
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 6px;
+}
+
+.upload-area {
+    margin-top: 24px;
+    padding: 26px;
+    border: 2px dashed var(--border);
+    border-radius: 16px;
+    text-align: center;
+    background: #f8fafc;
+}
+
+.upload-area p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.upload-btn {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 10px 18px;
+    background: var(--primary);
+    color: white;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.upload-btn:hover {
+    background: var(--primary-dark);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.filename {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #334155;
+}
+
+button {
+    width: 100%;
+    margin-top: 22px;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.95;
+}
+
+img {
+    width: 100%;
+    margin-top: 24px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+}
+
+.result {
+    margin-top: 22px;
+    padding: 16px;
+    border-radius: 14px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.normal {
+    background: #ecfdf5;
+    color: #15803d;
+}
+
+.pneumonia {
+    background: #fef2f2;
+    color: #b91c1c;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+
+<h1>Pneumonia Detection</h1>
+<div class="subtitle">AI-based Chest X-ray Analysis</div>
+
+<form method="POST" enctype="multipart/form-data">
+
+    <div class="upload-area">
+        <p>Upload a chest X-ray image</p>
+
+        <label class="upload-btn">
+            Choose File
+            <input type="file" name="image" accept="image/*" required onchange="showFileName(this)">
+        </label>
+
+        <div class="filename" id="filename">No file selected</div>
+    </div>
+
+    <button type="submit">Analyze X-ray</button>
+
+</form>
+
+{% if image_path %}
+    <img src="{{ image_path }}" alt="Uploaded X-ray">
+{% endif %}
+
+{% if prediction %}
+    <div class="result {% if prediction == 'Normal' %}normal{% else %}pneumonia{% endif %}">
+        {{ prediction }} <br>
+        Confidence: {{ "%.3f"|format(confidence) }}
+    </div>
+{% endif %}
+
+</div>
+</div>
+
+<script>
+function showFileName(input) {
+    const fileName = input.files[0]?.name || "No file selected";
+    document.getElementById("filename").innerText = fileName;
+}
+</script>
+
+</body>
+</html>
