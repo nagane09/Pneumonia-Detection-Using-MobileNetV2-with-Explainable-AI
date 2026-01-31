@@ -10,14 +10,14 @@ This repository presents a deep learning approach for **automatic pneumonia dete
 
 The dataset contains chest X-ray images categorized into two classes:
 
-- **Normal**: 1000 images of healthy lungs  
-- **Pneumonia**: 1000 images of infected lungs (viral or bacterial)  
+- **Normal**: 1000+ images of healthy lungs  
+- **Pneumonia**: 1000+ images of infected lungs (viral or bacterial)  
 
 The dataset was randomly split into training, validation, and test sets to ensure unbiased model evaluation:
 
-- **Training set**: 700 images per class  
-- **Validation set**: 150 images per class  
-- **Test set**: 150 images per class  
+- **Training set**: 900+ images per class  
+- **Validation set**: 300+ images per class  
+- **Test set**: 250+ images per class  
 
 This splitting ensures that the model learns generalizable features rather than memorizing specific images.
 
