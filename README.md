@@ -1,6 +1,6 @@
 # Pneumonia Detection from Chest X-Rays Using MobileNetV2 and Grad-CAM
 
-[Live Demo](https://nagane09-pneumonia-detection-using-mobilenetv2-with--app-jerbqg.streamlit.app/)
+[Live Demo] :- https://nagane09-pneumonia-detection-using-mobilenetv2-with--app-jerbqg.streamlit.app/
 
 This repository presents a deep learning approach for **automatic pneumonia detection** from chest X-ray images. The project combines a **MobileNetV2-based classifier** with **Grad-CAM visualizations** to provide interpretable predictions, suitable for research purposes.
 
